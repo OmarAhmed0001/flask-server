@@ -176,28 +176,6 @@ train_transforms = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize(mean, std)])
 
-# Specify the file ID of the file you want to download from Google Drive
-file_id = '1Klw2YvgxCMoODEwlY0mpaApJ4Q_mVL6c'
-
-# Make sure the URL is accessible by anyone
-download_url = f'https://drive.google.com/uc?id={file_id}'
-
-# Specify the file name to save as
-file_name = 'model_84_acc_10_frames_final_data.pt'
-
-# Check if the file already exists in the directory
-if os.path.isfile(file_name):
-    print(f'File "{file_name}" already exists in the directory.')
-else:
-    # Perform the file download
-    response = requests.get(download_url)
-    response.raise_for_status()
-
-    # Save the file
-    with open(file_name, 'wb') as file:
-        file.write(response.content)
-
-    print(f'Successfully downloaded file: {file_name}')
 
 @app.route('/', methods=['POST'])
 def hello():
